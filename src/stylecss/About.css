@@ -1,0 +1,179 @@
+/* Base Styles - Mobile First */
+.about {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ededed;
+  padding: 2rem 0;
+}
+
+.about .about-hed {
+  padding: 4rem 1rem;
+  width: 100%;
+  min-height: 18rem;
+  background-image:
+    linear-gradient(rgba(38, 58, 95, 0.7), rgba(38, 58, 95, 0.7)),
+    url(https://applywize.com/assets/blog-a7202add.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about .about-hed h1 {
+  font-size: clamp(2rem, 6vw, 3.125rem);
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #ff883e;
+  text-underline-offset: 0.5rem;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+/* Content Sections */
+.about-content {
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+.first-content,
+.second-content {
+  width: 100%;
+}
+.sec-content-img {
+  width: 500px;
+  height: 500px;
+}
+.about-content h1 {
+  line-height: 1.4;
+  padding: 0.5rem;
+  color: #263a5f;
+  font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+}
+
+.about-content p {
+  line-height: 1.6;
+  padding: 0.5rem;
+  letter-spacing: 0.03em;
+  word-spacing: 0.1em;
+  font-size: clamp(1rem, 2vw, 1.0625rem);
+  color: #333;
+}
+
+/* Vision & Mission Section */
+.about-aim {
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+.vision,
+.mission {
+  width: 100%;
+  min-height: 16rem;
+  background-color: #263a5f;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.mission {
+  background-color: #ff883e;
+}
+
+.vision h1,
+.mission h1 {
+  font-size: clamp(1.25rem, 3vw, 1.5625rem);
+  color: #ff883e;
+  margin: 0 0 1rem;
+  padding-left: 0.5rem;
+}
+
+.mission h1 {
+  color: #263a5f;
+}
+
+.vision p,
+.mission p {
+  line-height: 1.6;
+  color: #ff883e;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  padding: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.mission p {
+  color: #263a5f;
+}
+
+/* Tablet View (768px+) */
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+    padding: 0 2rem;
+    gap: 1.5rem;
+  }
+
+  .first-content,
+  .second-content {
+    width: 50%;
+  }
+
+  .about-aim {
+    flex-direction: row;
+    padding: 0 2rem;
+  }
+
+  .vision,
+  .mission {
+    width: 50%;
+  }
+}
+
+/* Desktop View (1024px+) */
+@media (min-width: 1024px) {
+  .about .about-hed {
+    min-height: 22rem;
+    padding-top: 6rem;
+  }
+
+  .about-content,
+  .about-aim {
+    padding: 0 4rem;
+  }
+
+  .about-content p,
+  .vision p,
+  .mission p {
+    word-spacing: 0.15em;
+  }
+}
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .about-content,
+  .about-aim {
+    padding: 0 5rem;
+  }
+}
+
+/* Hover Effects */
+@media (hover: hover) {
+  .vision:hover,
+  .mission:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+}
