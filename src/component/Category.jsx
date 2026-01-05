@@ -12,7 +12,7 @@ import "@ant-design/v5-patch-for-react-19";
 import { Modal } from "antd";
 
 const Category = () => {
-  const navigate = useNavigate();
+           const navigate = useNavigate();
 
   const [isEditing, setIsEditing] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
