@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Link } from "react-router-dom";
 import "./style.css";
 import APIUrl from "./APIUrl";
-import { LoginSchema } from "./validationScema";
+import { LoginSchema } from "./ValidationScema.jsx";
 import { useFormik } from "formik";
 // import './ValidationScema.css';
 import { useNavigate } from "react-router-dom";
