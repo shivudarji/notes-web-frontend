@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Link } from "react-router";
 import "./style.css";
 import axios from "axios";
-import { SignUpSchema } from "./validationScema";
+import { SignUpSchema } from './ValidationScema.jsx';
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import APIUrl from "./APIUrl";
