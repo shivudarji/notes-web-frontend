@@ -4,7 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import "../stylecss/Footer.css";
-
+import notifyLogo from '../assets/noteifyLogo.png'
 const Footer = () => {
   return (
     <>
@@ -12,8 +12,9 @@ const Footer = () => {
         <div className="footer-content">
           <div className="first-col">
             <h1 className="logo">
-              <img src="/public/note.svg"></img>
-            </h1>
+                <img src={notifyLogo} className="logo" alt="Logo"/>
+            
+                   </h1>
             <p>Privacy Policy</p>
             <br></br>
             <p>Terms & Conditions</p>

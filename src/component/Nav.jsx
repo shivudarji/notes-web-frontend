@@ -14,7 +14,7 @@ import publicRoutes, { protectedRoutes } from "../ProtectRoute/CommonRoute";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
+import notifyLogo from '../assets/noteifyLogo.png'
 const Nav = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ const Nav = () => {
     <>
       <nav className="navbar">
         <div className="navbar__container">
-          <img src="/public/note.svg" className="logo" alt="Logo" />
+          <img src={notifyLogo} className="logo" alt="Logo" />
 
           {/* Hamburger menu button */}
           <div className="navbar__toggle" onClick={toggleMobileMenu}>

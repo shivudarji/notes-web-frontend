@@ -1,5 +1,6 @@
 import React from "react";
 import "../stylecss/About.css";
+import aboutImg from "/public/whoweare1-e0f0a1e6.gif"
 import { useOutletContext } from "react-router-dom";
 const About = () => {
   return (
@@ -32,7 +33,7 @@ const About = () => {
           </div>
           <div className="second-content">
                     <img
-              src="/public/whoweare1-e0f0a1e6.gif"
+              src={aboutImg}
               className="sec-content-img"
             ></img>
           </div>

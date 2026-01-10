@@ -41,7 +41,7 @@ const Login = () => {
         dispatch(login({ values }));
 
         try {
-          console.warn("login try");
+        
           const response = await axiosRequest({
             method: "POST",
             url: loginUrl,
@@ -54,7 +54,7 @@ const Login = () => {
           });
 
           localStorage.setItem("token", response.token);
-          const userData = response.data.user;
+          const userData = response?.data.user;
           const fullname = `${userData.firstName} ${userData.lastName}`.trim();
           localStorage.setItem("fullname", fullname);
           console.warn("login try", userData);
