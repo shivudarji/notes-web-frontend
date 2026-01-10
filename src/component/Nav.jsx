@@ -78,8 +78,12 @@ const Nav = () => {
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </div>
 
-          <ul className={`navbar_menu ${isMobileMenuOpen ? "active" : ""}`}>
-            <li className="navbar_item">
+         <ul
+  className={`navbar_menu 
+    ${isMobileMenuOpen ? "active" : ""} 
+    ${isAuthenticated && token ? "auth-menu" : ""}
+  `}
+>   <li className="navbar_item">
               <Link
                 to="/"
                 className="navbar_links"

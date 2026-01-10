@@ -158,13 +158,19 @@
     background: #2c3e50;
   }
 
-  .navbar_menu.active {
-    left: 0;
-    height: 400px;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 1;
-  }
+.navbar_menu.active {
+  left: 0;
+  height: 400px; /* default height */
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+/* 🔥 Logged-in user → full height menu */
+.navbar_menu.auth-menu.active {
+  height: calc(100vh - 80px);
+}
+
 
   .navbar_item {
     width: 100%;
