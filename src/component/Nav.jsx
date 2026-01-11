@@ -25,18 +25,18 @@ const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showDropdown, setShowDropdown] = useState(false);
+useEffect(() => {
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+    if (window.innerWidth >= 768) {
+      setIsMobileMenuOpen(false);
+    }
+  };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      if (window.innerWidth > 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleLogin = () => {
     dispatch(login(user, notes));
@@ -110,6 +110,7 @@ const Nav = () => {
                 About
               </Link>
             </li>
+            
 
             {/* {isAuthenticated && token && (
               <li className="navbar_item">
@@ -147,8 +148,12 @@ const Nav = () => {
                     Notes
                   </Link>
                 </li>
-                <li className="navbar_btn">
-                  <div className="profile" onClick={toggleDropdown}>
+                {/* 🔹 MOBILE PROFILE */}
+ {/* MOBILE HEADER ICONS */}
+ {
+  !isMobileMenuOpen ? <> 
+                    <li className="navbar_btn">
+                  <div className="profile" onClick={()=>{toggleDropdown();}} >
                     <div className="profile-icon">
                       <AccountCircleIcon fontSize="large" />
                     </div>
@@ -164,6 +169,7 @@ const Nav = () => {
                           onClick={() => {
                             profile();
                             setShowDropdown(false);
+                            // setIsMobileMenuOpen(true);
                           }}
                         >
                           <PersonIcon /> Profile
@@ -174,6 +180,7 @@ const Nav = () => {
                           onClick={() => {
                             logoutBtn();
                             setShowDropdown(false);
+                            // setIsMobileMenuOpen(true);
                           }}
                         >
                           <LogoutIcon /> Logout
@@ -182,6 +189,37 @@ const Nav = () => {
                     )}
                   </div>
                 </li>
+       </>:<>
+
+  <li className="navbar_item">
+                  <Link
+                    to={protectedRoutes.PROFILE.path}
+                    className="navbar_links"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Profile
+               </Link>
+               </li>
+                <li className="navbar_btn">
+                <Link
+                  to={publicRoutes.LOGIN.path}
+                  className="button"
+                  onClick={() => {
+                    logoutBtn();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Logout
+                </Link>
+                 </li>
+                 
+                 
+                 </>
+ }
+   
+        
+             
+               
               </>
             ) : (
               <li className="navbar_btn">

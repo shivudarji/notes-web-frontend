@@ -56,13 +56,16 @@ const SignUp = () => {
             url: signupUrl,
             data: values,
           });
-
-          toast.success("Signup Successfully", {
+            if(response)
+            {
+           toast.success("Signup Successfully", {
             position: "top-center",
             autoClose: 1000,
           });
 
           navigate("/login");
+
+            }
         } catch (error) {
           if (error.response) {
             // console.error('Server responded:', error.response.status, error.response.data);

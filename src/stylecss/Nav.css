@@ -160,7 +160,7 @@
 
 .navbar_menu.active {
   left: 0;
-  height: 400px; /* default height */
+  height: auto; /* default height */
   opacity: 1;
   transition: all 0.5s ease;
   z-index: 1;
@@ -168,7 +168,7 @@
 
 /* 🔥 Logged-in user → full height menu */
 .navbar_menu.auth-menu.active {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 30vh);
 }
 
 
@@ -179,7 +179,7 @@
 
   .navbar_links {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     display: table;
   }
@@ -225,3 +225,37 @@
     margin: 10px auto !important;
   }
 }
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+}
+.mobile-profile-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mobile-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-icon.logout {
+  color: #ff4d4f;
+}
+

@@ -23,7 +23,7 @@ const Profile = () => {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is required"),
     lastName: Yup.string().required("Last Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    email: Yup.string().nullable(),
     mobile: Yup.string().required("Mobile is required"),
     gender: Yup.string().required("Gender is required"),
     country: Yup.string().required("Country is required"),
@@ -58,43 +58,45 @@ const Profile = () => {
     },
   });
 
-  const onSubmit = async (data) => {
-    // Store profile locally or send to API
-    const payload = {
-      ...data,
-      dob: data.dob ? data.dob.toISOString().split("T")[0] : null,
-
-      event_time: data.event_time
-        ? data.event_time.toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-          })
-        : null,
-    };
-    secureLocalStorage.setItem("profile", payload);
-    console.warn("submit data", payload);
-    const response = await updateProfileData(payload);
-    if (response) {
-      toast.success("Profile updated successfully");
-      console.log(data);
-    }
+const onSubmit = async (data) => {
+  const payload = {
+    ...data,
+    dob: data.dob ? data.dob.toISOString().split("T")[0] : null,
+    event_time: data.event_time
+      ? data.event_time.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
+      : null,
   };
+
+  // 🔹 Store fullName in localStorage again after submit
+  const fullname = `${data.firstName} ${data.lastName}`.trim();
+  localStorage.setItem("fullname", fullname);
+
+  secureLocalStorage.setItem("profile", payload);
+
+  const response = await updateProfileData(payload); // API call
+  if (response) {
+    toast.success("Profile updated successfully");
+  }
+};
+
 
   // Load profile data from API
   useEffect(() => {
     loadProfile();
   }, []);
 
+ 
   const loadProfile = useCallback(async () => {
     const data = await editProfile();
     setExistingDetail(data);
-    localStorage.setItem(
-      "fullname",
-      `${existingDetail.firstName} ${existingDetail.lastName}`.trim(),
-    );
-
-    console.warn("edit data", existingDetail);
-    setValue("email", existingDetail.email);
+    if(data)
+    {
+    
+   const fullname = `${data.firstName || ""} ${data.lastName || ""}`.trim();
+  localStorage.setItem("fullname", fullname);
+ 
+    console.warn("edit data", data);
+    setValue("email", data.user.email);
     setValue("firstName", data.firstName);
     setValue("lastName", data.lastName);
     if (data?.hobbies) {
@@ -118,6 +120,8 @@ const Profile = () => {
     if (data?.event_time) {
       const timeDate = new Date(`1970-01-01T${data.event_time}:00`);
       setValue("event_time", timeDate);
+    }
+
     }
 
     // Object.keys(data).forEach((key) => setValue(key, data[key]));
@@ -162,7 +166,7 @@ const Profile = () => {
 
       <Form.Group className="mb-3">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="text" {...register("email")} />
+        <Form.Control type="text" {...register("email")} disabled />
         {errors.email && (
           <small className="text-danger">{errors.email.message}</small>
         )}
